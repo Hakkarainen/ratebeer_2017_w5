@@ -5,46 +5,35 @@
     <%= submit_tag "Search" %>
 <% end %>
 
+<p> </p>
+<p> </p>
+<h2>     Beer Places </h2>
+<p> </p>
+
+<% if session[:last_city].nil? %>
+    <p>no city searched yet</p>
+<% else %>
+    <p>previous city searched: <%= session[:last_city] %></p>
+<% end %>
+
 <% if @places %>
     <table>
-      <thead>
-      <% Place.rendered_fields.each do |f| %>
-          <td><%=f %></td>
-      <% end %>
-      </thead>
+      <!--<thead>-->
+      <!--<% Place.rendered_fields.each do |f| %>-->
+          <!--<td><%=f %></td>-->
+      <!--<% end %>-->
+      <!--</thead>-->
+
       <% @places.each do |place| %>
           <tr>
             <% Place.rendered_fields.each do |f| %>
-                <td><%= place.send(f) %></td>
+
+                  <% if f==:name %>
+                      <td> <%= link_to place.send(f), place %></td>
+                  <% end %>
+
             <% end %>
           </tr>
       <% end %>
     </table>
 <% end %>
-
-
-<!--<p id="notice"><%= notice %></p>
-
-<h1>Listing Places</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @places.each do |place| %>
-      <tr>
-        <td><%= link_to 'Show', place %></td>
-        <td><%= link_to 'Edit', edit_place_path(place) %></td>
-        <td><%= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Place', new_place_path %>-->

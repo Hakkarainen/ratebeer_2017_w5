@@ -1,4 +1,5 @@
 require "rails_helper"
+require 'beermapping_api'
 
 RSpec.describe PlacesController, type: :routing do
   describe "routing" do
@@ -15,25 +16,25 @@ RSpec.describe PlacesController, type: :routing do
       expect(:get => "/places/1").to route_to("places#show", :id => "1")
     end
 
-    it "routes to #edit" do
-      expect(:get => "/places/1/edit").to route_to("places#edit", :id => "1")
-    end
+    # it "routes to #edit" do
+    #   expect(:get => "/places/1/edit").to route_to("places#edit", :id => "1")
+    # end
 
-    it "routes to #create" do
-      expect(:post => "/places").to route_to("places#create")
-    end
+     it "routes to #search" do
+       expect(:post => "/places").to route_to("places#search")
+     end
 
-    it "routes to #update via PUT" do
-      expect(:put => "/places/1").to route_to("places#update", :id => "1")
-    end
+    # it "routes to #update via PUT" do
+    #   expect(:put => "/places/1").to route_to("places#update", :id => "1")
+    # end
 
-    it "routes to #update via PATCH" do
-      expect(:patch => "/places/1").to route_to("places#update", :id => "1")
-    end
+    # it "routes to #update via PATCH" do
+    #   expect(:patch => "/places/1").to route_to("places#update", :id => "1")
+    # end
 
-    it "routes to #destroy" do
-      expect(:delete => "/places/1").to route_to("places#destroy", :id => "1")
-    end
+    # it "routes to #destroy" do
+    #   expect(:delete => "/places/1").to route_to("places#destroy", :id => "1")
+    # end
 
   end
 end
